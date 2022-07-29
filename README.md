@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Contacts
 
-## Getting Started
+This is a sample project, a crud of a contact list made with React and Next js, along with its system tests using Playwright.
 
-First, run the development server:
+## Architecture
+
+There is a small back end made with json-server, which creates a REST API. Then, the front end connects to that back end. It is made with the Next js framework, which uses the React library. Next js makes it easy to build a scalable router, which supports mixed requests, either handled by the client or the server, allowing to get data in different ways as appropriate. To facilitate state and cache handling, React Query is used, which greatly simplifies the handling of data loading and its synchronization with the back end. Formik together with Yup is used to build forms. The former facilitates form state management in isolation, centralizing validations and errors, as well as its lifecycle. The second is a library that acts as a helper to write validations more quickly.
+
+## Development
+
+Install packages with `npn install` or `yarn install`.
+
+To run the project in development mode you must start the api server, made with json-server, and the front end made in Next js.
+
+In separate terminals run:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm run dev or yarn dev
+npm run json-server --watch db.json --port 3001 or yarn json-server --watch db.json --port 3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tests
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The tests are system tests that cover the 5 crucial methods of a crud, i.e. show all, show one, create, update and delete. For this, Playwright is used, which, running a headless browser, navigates the page, checking that the expected elements exist or filling out forms and then testing the changes.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+To run the tests run `npm run test:e2e` or `yarn test:e2e`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The first time, Playwright will probably ask to install additional dependencies, such as browsers. Follow the instructions that appear.

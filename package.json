@@ -6,14 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "formik": "^2.2.9",
+    "json-server": "^0.17.0",
     "next": "12.1.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-query": "^3.39.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@playwright/test": "^1.22.2",
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6"
   }
